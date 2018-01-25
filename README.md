@@ -88,7 +88,7 @@ setTimeout(blastOff, 86400000);
 
 **Good:**
 ```javascript
-// Declare them as capitalized `const` globals.
+// Declare them as capitalized named constants.
 const MILLISECONDS_IN_A_DAY = 86400000;
 
 setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
@@ -192,7 +192,7 @@ function createMicrobrewery(name) {
 
 **Good:**
 ```javascript
-function createMicrobrewery(breweryName = 'Hipster Brew Co.') {
+function createMicrobrewery(name = 'Hipster Brew Co.') {
   // ...
 }
 
@@ -295,7 +295,7 @@ function addToDate(date, month) {
 
 const date = new Date();
 
-// It's hard to to tell from the function name what is added
+// It's hard to tell from the function name what is added
 addToDate(date, 1);
 ```
 
@@ -439,8 +439,8 @@ function showEmployeeList(employees) {
   employees.forEach((employee) => {
     const expectedSalary = employee.calculateExpectedSalary();
     const experience = employee.getExperience();
-    
-    let data = {
+
+    const data = {
       expectedSalary,
       experience
     };
@@ -621,7 +621,7 @@ const addItemToCart = (cart, item) => {
 **Good:**
 ```javascript
 const addItemToCart = (cart, item) => {
-  return [...cart, { item, date : Date.now() }];
+  return [...cart, { item, date: Date.now() }];
 };
 ```
 
@@ -659,7 +659,7 @@ class SuperArray extends Array {
 
 ### Favor functional programming over imperative programming
 JavaScript isn't a functional language in the way that Haskell is, but it has
-a functional flavor to it. Functional languages are cleaner and easier to test.
+a functional flavor to it. Functional languages can be cleaner and easier to test.
 Favor this style of programming when you can.
 
 **Bad:**
@@ -705,11 +705,9 @@ const programmerOutput = [
   }
 ];
 
-const INITIAL_VALUE = 0;
-
 const totalOutput = programmerOutput
-  .map((programmer) => programmer.linesOfCode)
-  .reduce((acc, linesOfCode) => acc + linesOfCode, INITIAL_VALUE);
+  .map(output => output.linesOfCode)
+  .reduce((totalLines, lines) => totalLines + lines);
 ```
 **[⬆ back to top](#table-of-contents)**
 
@@ -841,7 +839,7 @@ function travelToTexas(vehicle) {
 **[⬆ back to top](#table-of-contents)**
 
 ### Avoid type-checking (part 2)
-If you are working with basic primitive values like strings, integers, and arrays,
+If you are working with basic primitive values like strings and integers,
 and you can't use polymorphism but you still feel the need to type-check,
 you should consider using TypeScript. It is an excellent alternative to normal
 JavaScript, as it provides you with static typing on top of standard JavaScript
@@ -1685,7 +1683,7 @@ you achieve very high confidence and developer peace of mind. This means that
 in addition to having a great testing framework, you also need to use a
 [good coverage tool](http://gotwarlost.github.io/istanbul/).
 
-There's no excuse to not write tests. There's [plenty of good JS test frameworks](http://jstherightway.org/#testing-tools), so find one that your team prefers.
+There's no excuse to not write tests. There are [plenty of good JS test frameworks](http://jstherightway.org/#testing-tools), so find one that your team prefers.
 When you find one that works for your team, then aim to always write tests
 for every new feature/module you introduce. If your preferred method is
 Test Driven Development (TDD), that is great, but the main point is to just
